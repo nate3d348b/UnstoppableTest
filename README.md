@@ -2,6 +2,16 @@
 
 An **unofficial, personal, browser-playable, solo-first framework** for exploring the mechanics of the physical card-crafting game *Unstoppable*. Built in Python with [Streamlit](https://streamlit.io/). **All bundled cards and the boss are invented demo data, not published card text.** No copyrighted card art is included.
 
+## Current deployment & development status
+
+- **Hosted prototype:** [natestoppable.streamlit.app](https://natestoppable.streamlit.app).
+- **Project snapshot and known limitations:** [PROJECT_STATUS.md](PROJECT_STATUS.md).
+- **Continuous integration:** [GitHub Actions tests](.github/workflows/python-ci.yml) run on pull requests and pushes to `main` using Python 3.11 and 3.12.
+- **Regression tests:** `python -m unittest discover -s tests -v` (22 tests with the integrity suite).
+- **Scope:** this is a **demo-backed solo framework**, not a complete, verified rules implementation. Real cards, exact boss logic, and advanced timing are still to be implemented.
+
+Develop features on branches and review through pull requests. The unpacked source files, not the historical `unstoppable_web_framework.zip` export in the repository, are the source of truth.
+
 ## Play online without installing Python on your computer
 
 1. Create a GitHub repository and upload **the contents of this folder** (not the ZIP as one file). Include the hidden `.streamlit` folder, or omit it and accept Streamlit's default styling.
