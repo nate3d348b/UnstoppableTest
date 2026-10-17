@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "demo": true,
+  "notes": "All card names and effects below are illustrative placeholders, NOT published Unstoppable card text or boss setup.",
+  "cards": [
+    {"id":"practice_strike", "name":"Training Strike", "kind":"core", "type":"tactic", "cost":1, "level":0, "faction":"none", "effects":{"on_play":[{"op":"damage","amount":2,"target":"choose"}]}},
+    {"id":"spare_parts", "name":"Pocket Change", "kind":"core", "type":"tactic", "cost":0, "level":0, "faction":"none", "effects":{"on_play":[{"op":"credits","amount":2}]}},
+    {"id":"pilot_dash", "name":"Training Dash", "kind":"core", "type":"tactic", "cost":1, "level":0, "faction":"silver", "effects":{"on_play":[{"op":"damage","amount":2,"target":"choose"},{"op":"train","amount":1}]}},
+    {"id":"pilot_shield", "name":"Practice Defender", "kind":"core", "type":"ally", "cost":1, "level":0, "faction":"council", "effects":{"on_exhaust":[{"op":"armor","amount":3}]}},
+    {"id":"pilot_scout", "name":"Practice Scout", "kind":"core", "type":"ally", "cost":1, "level":0, "faction":"junker", "effects":{"on_exhaust":[{"op":"damage","amount":1,"target":"choose"}]}},
+
+    {"id":"t1", "name":"Workshop Feint", "kind":"core", "type":"tactic", "cost":1, "level":1, "faction":"junker", "effects":{"on_play":[{"op":"damage","amount":3,"target":"choose"}]}},
+    {"id":"t1a", "name":"Copper Guard", "kind":"core", "type":"ally", "cost":1, "level":1, "faction":"council", "effects":{"on_exhaust":[{"op":"armor","amount":2}]}},
+    {"id":"t1b", "name":"Signal Burst", "kind":"core", "type":"tactic", "cost":1, "level":1, "faction":"viren", "effects":{"on_play":[{"op":"credits","amount":2},{"op":"damage","amount":1,"target":"choose"}]}},
+    {"id":"t2", "name":"Overcharge", "kind":"core", "type":"tactic", "cost":2, "level":2, "faction":"silver", "effects":{"on_play":[{"op":"damage","amount":4,"target":"choose"},{"op":"boss_damage","amount":1}]}},
+    {"id":"t2a", "name":"Rescue Drone", "kind":"core", "type":"ally", "cost":2, "level":2, "faction":"council", "effects":{"on_exhaust":[{"op":"health","amount":1},{"op":"damage","amount":1,"target":"choose"}]}},
+    {"id":"t3", "name":"Ion Hammer", "kind":"core", "type":"tactic", "cost":2, "level":3, "faction":"junker", "effects":{"on_play":[{"op":"damage","amount":5,"target":"choose"},{"op":"boss_damage","amount":1}]}},
+    {"id":"t4", "name":"Barrier Pulse", "kind":"core", "type":"tactic", "cost":1, "level":4, "faction":"viren", "effects":{"on_play":[{"op":"armor","amount":4},{"op":"boss_damage","amount":1}]}},
+    {"id":"t5", "name":"Heavy Artillery", "kind":"core", "type":"ally", "cost":2, "level":5, "faction":"council", "effects":{"on_exhaust":[{"op":"damage","amount":5,"target":"choose"},{"op":"boss_damage","amount":1}]}},
+    {"id":"t6", "name":"Final Gambit", "kind":"core", "type":"tactic", "cost":2, "level":6, "faction":"silver", "effects":{"on_play":[{"op":"boss_damage","amount":3},{"op":"damage","amount":3,"target":"choose"}]}},
+
+    {"id":"start_rogue", "name":"Practice Rogue", "kind":"threat", "attack":1, "defense":1},
+    {"id":"start_drone", "name":"Wandering Drone", "kind":"threat", "attack":1, "defense":0},
+    {"id":"start_taunter", "name":"Mocking Sentry", "kind":"threat", "attack":1, "defense":1, "keywords":["taunt"]},
+    {"id":"start_sprinter", "name":"Running Scout", "kind":"threat", "attack":1, "defense":1, "keywords":["fast"]},
+    {"id":"reserve_guard", "name":"Reserve Guard", "kind":"threat", "attack":1, "defense":1},
+    {"id":"reserve_rager", "name":"Cranky Bruiser", "kind":"threat", "attack":1, "defense":2, "keywords":["rage"]},
+    {"id":"reserve_terror", "name":"Disruptor", "kind":"threat", "attack":1, "defense":2, "keywords":["terror"]},
+    {"id":"reserve_crazed", "name":"Feral Pursuer", "kind":"threat", "attack":2, "defense":1, "keywords":[{"name":"crazed","value":5}]},
+    {"id":"reserve_bounty", "name":"Token Collector", "kind":"threat", "attack":1, "defense":1, "effects":{"on_defeat":[{"op":"credits","amount":1}]}},
+
+    {"id":"upgrade_top_a", "name":"Overclock Module", "kind":"upgrade", "slot":"top", "cost":2, "requires":"either", "core_modifiers":{"cost":-1}, "threat_modifiers":{"attack":1}},
+    {"id":"upgrade_top_b", "name":"Precision Module", "kind":"upgrade", "slot":"top", "cost":2, "requires":"tactic", "effects":{"on_play":[{"op":"damage","amount":1,"target":"choose"}]}, "threat_modifiers":{"defense":1}},
+    {"id":"upgrade_bottom_a", "name":"Guard Plating", "kind":"upgrade", "slot":"bottom", "cost":2, "requires":"ally", "effects":{"on_exhaust":[{"op":"armor","amount":2}]}, "threat_modifiers":{"defense":1}},
+    {"id":"upgrade_bottom_b", "name":"Battery Cells", "kind":"upgrade", "slot":"bottom", "cost":1, "requires":"either", "effects":{"on_play":[{"op":"credits","amount":1}]}, "threat_modifiers":{"attack":1}},
+
+    {"id":"boss_warning", "name":"Prototype Boss Directive", "kind":"boss", "effects":{"on_reveal":[{"op":"armor","amount":1}]}}
+  ],
+  "scenario": {
+    "name":"Demo Menace (placeholder boss)", "character":"Demo Pilot", "boss_goal":4,
+    "starting_health":10, "starting_credits":3,
+    "starter_sleeves":[
+      {"core":"practice_strike","threat":"start_rogue","count":6},
+      {"core":"spare_parts","threat":"start_drone","count":1},
+      {"core":"pilot_dash","threat":"start_taunter","count":1},
+      {"core":"pilot_shield","threat":"start_rogue","count":1},
+      {"core":"pilot_scout","threat":"start_sprinter","count":1}
+    ],
+    "reserve_threats":[
+      {"threat":"reserve_guard","count":16},
+      {"threat":"reserve_bounty","count":12},
+      {"threat":"reserve_crazed","count":5},
+      {"threat":"reserve_terror","count":3},
+      {"threat":"reserve_rager","count":2}
+    ],
+    "loose_cores": {
+      "1":["t1","t1","t1a","t1a","t1b","t1b","t1","t1a","t1b"],
+      "2":["t2","t2","t2a","t2","t2a","t2","t2a"],
+      "3":["t3","t3","t3","t3"],
+      "4":["t4","t4","t4","t4"],
+      "5":["t5","t5","t5","t5"],
+      "6":["t6","t6","t6","t6"]
+    },
+    "loose_upgrades":["upgrade_top_a","upgrade_top_a","upgrade_top_a","upgrade_top_a","upgrade_top_b","upgrade_top_b","upgrade_top_b","upgrade_bottom_a","upgrade_bottom_a","upgrade_bottom_a","upgrade_bottom_b","upgrade_bottom_b","upgrade_bottom_b","upgrade_bottom_b"],
+    "boss_cards":["boss_warning"],
+    "danger_track":[
+      {"value":0},{"value":0},{"value":1},{"value":1,"skip_for":["normal"]},
+      {"value":2},{"value":2},{"value":3,"skip_for":["hard"]},
+      {"value":3},{"value":4,"effects":[{"op":"market_cycle"}]},
+      {"value":4},{"value":5},{"value":5,"skip_for":["expert"]},
+      {"value":6},{"value":6},{"value":7},{"value":7},{"value":8},{"value":9},{"value":9},{"value":10}
+    ],
+    "on_setup":[], "on_level_up":[]
+  }
+}
