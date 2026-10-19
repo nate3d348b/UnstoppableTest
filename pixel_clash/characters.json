@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ember",
+    "name": "EMBER",
+    "title": "The Flame Fist",
+    "coat": "#ed6244",
+    "trim": "#ffd36b",
+    "skin": "#f6b88c",
+    "hair": "#53283d",
+    "speed": 2.35,
+    "jump": 7.8,
+    "health": 110,
+    "power": 1.03,
+    "special": "fire",
+    "projectile": "#ff9c30"
+  },
+  {
+    "id": "volt",
+    "name": "VOLT",
+    "title": "The Circuit Striker",
+    "coat": "#4e8ef8",
+    "trim": "#97f4ef",
+    "skin": "#c88b69",
+    "hair": "#f2e8a0",
+    "speed": 2.8,
+    "jump": 8.5,
+    "health": 95,
+    "power": 0.96,
+    "special": "bolt",
+    "projectile": "#75f1ff"
+  },
+  {
+    "id": "onyx",
+    "name": "ONYX",
+    "title": "The Iron Guardian",
+    "coat": "#755aab",
+    "trim": "#c9b0f5",
+    "skin": "#9e6b4e",
+    "hair": "#252039",
+    "speed": 1.9,
+    "jump": 7,
+    "health": 130,
+    "power": 1.15,
+    "special": "shadow",
+    "projectile": "#c28cff"
+  }
+]
