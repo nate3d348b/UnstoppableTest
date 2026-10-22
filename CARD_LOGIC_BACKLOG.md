@@ -94,4 +94,26 @@ Legend: **Confirmed** = explicitly clarified by user or agreed notation; **Check
 8. [ ] Populate catalog and scenario setup from final user-provided workbook; separately validate official rulebook compliance.
 9. [ ] Add UI affordances: unresolved-effect tray, ordered effect choices, explicit pay/skip actions, eligible-target highlighting, event history and sleeve inspector.
 
+
+## H. Level 3 core discoveries (confirmed 2026-10-21)
+
+**User-confirmed interpretations:** The following assumptions about Level 3 cards were reviewed and confirmed. Actual numbers/wording still come from the final Excel workbook.
+
+- [ ] **Granted ally abilities:** A card can give **all allies currently in play, including those entering play later**, an additional `When Exhausted` effect while the granting source stays in play. An ally's normal exhaustion ability and granted effects can activate from **the same exhaustion** (not two costs). Recompute grants as allies enter/leave play; remove them immediately when the source leaves.
+- [ ] **Granted play triggers:** A source can give **other cards** a `When Played` effect, excluding itself. Distinguish the card on which a granted ability operates from the source that granted it; preserve damage/effect attribution for effects checking "damage from this card".
+- [ ] **Per-sleeve history:** A condition such as "first time this game this card is drawn" refers to **this physical sleeve instance**, not every instance with the same card definition. Store durable, save/load-safe draw history by sleeve UID, separately from first time this turn counters.
+- [ ] **Cross-face outcome targeting:** When this card's damage defeats a threat, an effect may discount the **core physically sleeved with that exact defeated threat**, not another card with the same definition. Check whether the defeated sleeve has an eligible core; retain UID and target face through flip/move.
+- [ ] **Card-specific temporary modifiers:** Per-sleeve AP discounts can last until end of turn, while source remains in play, or until the card is played/discarded. Record target UID, source UID, exact expiration event and modifier consumption independently.
+- [ ] **Scoped zone queries:** Count a named faction in the discard pile; choose a damaged active **non-boss** threat to discard; choose a level-3-or-below card from discard; choose random eligible cards by location. Query eligibility at resolution time.
+- [ ] **Zone movement edge cases:** Market cards may be cycled to the **bottom** of the upgrade deck; searching/retrieving may use discard pile by level; clarify ordering when multiple cards are placed on bottom. Track whole sleeve movement separately from loose upgrades.
+- [ ] **Repeat and event distinctions:** Repeated `Train Level: 1` actions must remain distinct; track training totals, individual events, and ability source. Granted abilities should not incur an extra AP/exhaustion cost unless printed.
+- [ ] **Event graph safety:** Multiple registered triggers may fire for one event, possibly including triggers granted by other cards. Use a resumable event queue with deterministic identity and player-selected ordering where permitted; prevent accidental duplicate processing and uncontrolled trigger loops.
+- [ ] **Confirm in rulebook:** Ordering/optionality of several `When Exhausted` effects from one exhaustion, exact source attribution for granted damage, and treatment of a modifier if a card changes zones before its expiry.
+
+### Card uniqueness correction
+
+- [ ] **Confirmed for completed Level 0–3 core transcription:** **All non-basic-attack cores are unique printed cards.** The **basic attack starter core** is the only duplicate core currently identified, and each character receives it. Do not generate artificial duplicate copies of other core definitions or assume a quantity greater than one.
+- [ ] **Design:** Continue distinguishing a printed card definition from a persistent physical sleeve instance, because starter basic attacks can repeat, the physical sleeve's threat/upgrades are independent, and future content must not force an architecture rewrite. Do not infer that different sleeves sharing a threat definition implies duplicate *cores*.
+- [ ] **Pending:** Validate quantities and any exceptions for Level 4–6 cores against the final workbook. The existing `data/demo_cards.json` deliberately contains repeated **fictional demo** cores and is *not* evidence about the real card set.
+
 **Maintenance rule:** Every new ambiguous card belongs here with: original workbook cell/card ID, proposed meaning, rulebook decision, engine feature, regression tests and implementation status.
